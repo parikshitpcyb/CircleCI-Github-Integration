@@ -32,8 +32,8 @@ commands:
         - run:
             name: Install Sonarqube scanner
             command: |
-                wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873.zip
-                unzip sonar-scanner-cli-4.2.0.1873.zip
+                wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
+                unzip sonar-scanner-cli-4.8.0.2856.zip
 
         - run:
             name: Run Sonarscanner
