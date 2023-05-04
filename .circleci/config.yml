@@ -2,35 +2,58 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
-    # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
-    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # Be sure to update the Docker image tag below to openjdk version of your application.
-    # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
+executors:
+  scanner:
     docker:
-      - image: cimg/openjdk:11.0
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      # Checkout the code as the first step.
-      - checkout
-      # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
-      # Then run your tests!
-      - run:
-          name: Test
-          command: mvn test
+      - image: openjdk:11
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+commands:
+  check-code-quality:
+    description: Check Code Quality
+    parameters:
+      sonar_server_url:
+        type: string
+        description: "URL of your SonarQube server." 
+        default: "$SONAR_HOST_URL"
+      sonar_login:
+        description: "Authentication key (sonar.login paramter) to access SonarQube and perform analysis"
+        type: string
+        default: "$SONAR_TOKEN"
+      sonar_sources:
+        description: "Where the files are located?"
+        type: string
+        default: "$SONAR_SOURCES"
+
+    steps:
+        - run:
+            name: ECHO
+            command: echo $SONAR_HOST_URL
+          
+        - run:
+            name: Install Sonarqube scanner
+            command: |
+                wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
+                unzip sonar-scanner-cli-4.8.0.2856.zip
+
+        - run:
+            name: Run Sonarscanner
+            command: |
+                export SONAR_SCANNER_OPTS="-Xmx2048m"
+                eval ./sonar-scanner-4.8.0.2856/bin/sonar-scanner \
+                -Dsonar.projectKey=CircleCI-Github-Integration \
+                -Dsonar.host.url=<< parameters.sonar_server_url >> \
+                -Dsonar.login=<< parameters.sonar_login >>
+
+#-Dsonar.sources=<< parameters.sonar_sources >> \ Removed as it is optional.
+
+jobs:
+  check-code-job:
+    executor: scanner
+    steps:
+      - check-code-quality
+          
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  check-code-quality-flow:
     jobs:
-      - build-and-test
+      - check-code-job:
+          context: SONAR_TOKEN
