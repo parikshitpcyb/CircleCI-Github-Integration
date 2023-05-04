@@ -14,7 +14,7 @@ commands:
       sonar_server_url:
         type: string
         description: "URL of your SonarQube server. e.g.: http://my.sonarqube,server:9000"
-        default: "$SONAR_SERVER"
+        default: "$SONAR_HOST_URL"
       sonar_login:
         description: "Authentication key (sonar.login paramter) to access SonarQube and perform analysis"
         type: string
@@ -25,6 +25,10 @@ commands:
         default: "$SONAR_SOURCES"
 
     steps:
+        - run:
+            name: ECHO
+            command: echo $SONAR_HOST_URL
+          
         - run:
             name: Install Sonarqube scanner
             command: |
@@ -37,8 +41,8 @@ commands:
                 export SONAR_SCANNER_OPTS="-Xmx2048m"
                 eval ./sonar-scanner-4.2.0.1873/bin/sonar-scanner \
                 -Dsonar.projectKey=CircleCI-Github-Integration \
-                -Dsonar.host.url=http://44.207.177.192/ \
-                -Dsonar.login=sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e
+                -Dsonar.host.url=<< parameters.sonar_server_url >> \
+                -Dsonar.login=<< parameters.sonar_login >>
 
 #-Dsonar.sources=<< parameters.sonar_sources >> \ Removed as it is optional.
 
@@ -47,9 +51,9 @@ jobs:
     executor: scanner
     steps:
       - check-code-quality
-
+          
 workflows:
   check-code-quality-flow:
     jobs:
       - check-code-job:
-          context: lineclass
+          context: SONAR_TOKEN
