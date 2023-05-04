@@ -39,7 +39,7 @@ commands:
             name: Run Sonarscanner
             command: |
                 export SONAR_SCANNER_OPTS="-Xmx2048m"
-                eval ./sonar-scanner-4.2.0.1873/bin/sonar-scanner \
+                eval ./sonar-scanner-4.8.0.2856/bin/sonar-scanner \
                 -Dsonar.projectKey=CircleCI-Github-Integration \
                 -Dsonar.host.url=<< parameters.sonar_server_url >> \
                 -Dsonar.login=<< parameters.sonar_login >>
