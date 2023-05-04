@@ -158,16 +158,16 @@ jobs:
     parameters:
       organization:
         type: env_var_name
-        default: SONARQUBE_SERVER_ORGANIZATION
+        default: "parikshitpcyb"
       host_url:
         type: env_var_name
-        default: SONARQUBE_SERVER_URL
+        default: "http://44.207.177.192"
       login:
         type: env_var_name
-        default: SONARQUBE_SERVER_LOGIN
+        default: "sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e"
       projectKey:
         type: env_var_name
-        default: CIRCLE_PROJECT_REPONAME
+        default: "CircleCI-Github-Integration"
       projectVersion:
         type: env_var_name
         default: CIRCLE_BUILD_NUM
