@@ -157,16 +157,16 @@ jobs:
   analyze:
     parameters:
       organization:
-        type: env_var_name
+        type: string
         default: "parikshitpcyb"
       host_url:
-        type: env_var_name
+        type: string
         default: "http://44.207.177.192"
       login:
-        type: env_var_name
+        type: string
         default: "sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e"
       projectKey:
-        type: env_var_name
+        type: string
         default: "CircleCI-Github-Integration"
       projectVersion:
         type: env_var_name
