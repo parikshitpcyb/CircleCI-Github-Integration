@@ -73,12 +73,12 @@ commands:
           command: |
             export SONAR_RUNNER_OPTS="<< parameters.runner_opts >>"
             eval ./sonar-scanner-<< parameters.engine_version >>/bin/sonar-scanner \
-              -Dsonar.organization=${<< parameters.organization >>} \
-              -Dsonar.host.url=${<< parameters.host_url >>} \
-              -Dsonar.login=${<< parameters.login >>} \
-              -Dsonar.projectKey=${<< parameters.projectKey >>} \
-              -Dsonar.projectBaseDir=<< parameters.projectBaseDir >> \
-              -Dsonar.sources=<< parameters.sources >> #\
+              -Dsonar.organization="parikshitpcyb" \
+              -Dsonar.host.url="http://44.207.177.192" \
+              -Dsonar.login="sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e" \
+              -Dsonar.projectKey="CircleCI-Github-Integration" \
+              -Dsonar.projectBaseDir=./ \
+              -Dsonar.sources=. #\
               #-Dsonar.github.oauth=${<< parameters.github_oauth >>} \
               #-Dsonar.github.repository=${<< parameters.github_repository >>} \
               #-Dsonar.exclusions="<< parameters.exclusions >>"
@@ -136,19 +136,12 @@ commands:
             if [ ! -z "${<< parameters.github_pullRequest >>}" ]; then
               export SONAR_RUNNER_OPTS="<< parameters.runner_opts >>"
               eval ./sonar-scanner-<< parameters.engine_version >>/bin/sonar-scanner \
-                -Dsonar.organization=${<< parameters.organization >>} \
-                -Dsonar.host.url=${<< parameters.host_url >>} \
-                -Dsonar.login=${<< parameters.login >>} \
-                -Dsonar.projectKey=${<< parameters.projectKey >>} \
-                -Dsonar.issuesReport.console.enable=<< parameters.issuesReport_console_enable >> \
-                -Dsonar.projectBaseDir=<< parameters.projectBaseDir >> \
-                -Dsonar.sources=<< parameters.sources >> \
-                -Dsonar.analysis.mode=<< parameters.analysis_mode >> \
-                -Dsonar.github.pullRequest=${<< parameters.github_pullRequest >>} \
-                -Dsonar.github.disableInlineComments=<< parameters.github_disableInlineComments >> \
-                -Dsonar.github.oauth=${<< parameters.github_oauth >>} \
-                -Dsonar.github.repository=${<< parameters.github_repository >>} \
-                -Dsonar.exclusions="=<< parameters.exclusions >>"
+                -Dsonar.organization="parikshitpcyb" \
+                -Dsonar.host.url="http://44.207.177.192" \
+                -Dsonar.login="sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e" \
+                -Dsonar.projectKey="CircleCI-Github-Integration" \
+                -Dsonar.projectBaseDir=./ \
+                -Dsonar.sources=. #\
             else
               echo "Check skipped..."
             fi
