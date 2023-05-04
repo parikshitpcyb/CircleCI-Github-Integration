@@ -42,6 +42,7 @@ commands:
                 eval ./sonar-scanner-4.8.0.2856/bin/sonar-scanner \
                 -Dsonar.projectKey=CircleCI-Github-Integration \
                 -Dsonar.host.url=<< parameters.sonar_server_url >> \
+                -Dsonar.sources=src \
                 -Dsonar.login=<< parameters.sonar_login >>
 
 #-Dsonar.sources=<< parameters.sonar_sources >> \ Removed as it is optional.
