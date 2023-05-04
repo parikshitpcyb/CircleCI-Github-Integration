@@ -38,8 +38,9 @@ commands:
                 eval ./sonar-scanner-4.2.0.1873/bin/sonar-scanner \
                 -Dsonar.projectKey=CircleCI-Github-Integration \
                 -Dsonar.host.url=http://44.207.177.192/ \
-                -Dsonar.sources=<< parameters.sonar_sources >> \
-                -Dsonar.login=sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e >>
+                -Dsonar.login=sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e
+
+#-Dsonar.sources=<< parameters.sonar_sources >> \ Removed as it is optional.
 
 jobs:
   check-code-job:
