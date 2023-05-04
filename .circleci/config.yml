@@ -42,7 +42,7 @@ commands:
                 eval ./sonar-scanner-4.8.0.2856/bin/sonar-scanner \
                 -Dsonar.projectKey=CircleCI-Github-Integration \
                 -Dsonar.host.url=<< parameters.sonar_server_url >> \
-                -Dsonar.sources=. \
+                -Dsonar.sources=./ \
                 -Dsonar.login=<< parameters.sonar_login >> \
                 -Dsonar.sonar.qualitygate.wait=true \
                 -Dsonar.sonar.qualitygate.timeout=300
