@@ -140,7 +140,6 @@ commands:
                 -Dsonar.host.url=${<< parameters.host_url >>} \
                 -Dsonar.login=${<< parameters.login >>} \
                 -Dsonar.projectKey=${<< parameters.projectKey >>} \
-                -Dsonar.projectVersion=2.${<< parameters.projectVersion >>} \
                 -Dsonar.issuesReport.console.enable=<< parameters.issuesReport_console_enable >> \
                 -Dsonar.projectBaseDir=<< parameters.projectBaseDir >> \
                 -Dsonar.sources=<< parameters.sources >> \
@@ -191,7 +190,6 @@ jobs:
           host_url: <<parameters.host_url >>
           organization: << parameters.organization >>
           projectKey: << parameters.projectKey >>
-          projectVersion: << parameters.projectVersion >>
           github_oauth: << parameters.github_oauth >>
           github_repository: << parameters.github_repository >>
           github_pullRequest: << parameters.github_pullRequest >>
