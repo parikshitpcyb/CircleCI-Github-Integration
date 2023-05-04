@@ -78,7 +78,7 @@ commands:
               -Dsonar.login="sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e" \
               -Dsonar.projectKey="CircleCI-Github-Integration" \
               -Dsonar.projectBaseDir=./ \
-              -Dsonar.sources=. #\
+              -Dsonar.sources=src/main/java/ #\
               #-Dsonar.github.oauth=${<< parameters.github_oauth >>} \
               #-Dsonar.github.repository=${<< parameters.github_repository >>} \
               #-Dsonar.exclusions="<< parameters.exclusions >>"
@@ -141,7 +141,7 @@ commands:
                 -Dsonar.login="sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e" \
                 -Dsonar.projectKey="CircleCI-Github-Integration" \
                 -Dsonar.projectBaseDir=./ \
-                -Dsonar.sources=. #\
+                -Dsonar.sources=src/main/java/ #\
             else
               echo "Check skipped..."
             fi
