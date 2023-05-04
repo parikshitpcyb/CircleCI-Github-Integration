@@ -13,7 +13,7 @@ commands:
     parameters:
       sonar_server_url:
         type: string
-        description: "URL of your SonarQube server. 
+        description: "URL of your SonarQube server." 
         default: "$SONAR_HOST_URL"
       sonar_login:
         description: "Authentication key (sonar.login paramter) to access SonarQube and perform analysis"
