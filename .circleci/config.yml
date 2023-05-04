@@ -204,3 +204,9 @@ jobs:
           github_oauth: << parameters.github_oauth >>
           github_repository: << parameters.github_repository >>
           projectBaseDir: ./
+
+workflows:
+  check-code-quality-flow:
+    jobs:
+        - analyze:
+            context: SONAR_TOKEN
