@@ -9,4 +9,4 @@ orbs:
 workflows:
   sonarqube-scanner:
     jobs: sonarqube/analyze
-      context: sonar_aws_cybage
+            context: sonar_aws_cybage
