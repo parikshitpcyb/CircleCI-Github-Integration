@@ -10,7 +10,7 @@ workflows:
   sonarqube-scanner:
     jobs:
       - sonarqube/analyze
-          context: SONAR_TOKEN
-          host_url: $SONAR_HOST_URL
-          login: $SONAR_TOKEN
-          projectKey: $CIRCLE_PROJECT_REPONAME
+          context: sonar_aws_cybage
+          #host_url: $SONAR_HOST_URL
+          #login: $SONAR_TOKEN
+          #projectKey: $CIRCLE_PROJECT_REPONAME
