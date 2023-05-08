@@ -9,7 +9,8 @@ orbs:
 workflows:
   sonarqube-scanner:
     jobs:
-      - maven/maven_test:
+      - maven/test:
+          command: '-X verify'
       - sonarqube/analyze:
           context: 
             - sonar_aws_cybage
