@@ -5,9 +5,9 @@ version: 2.1
 orbs:
   sonarqube: clicklogiq/sonarqube@1.0.1
 
-
 workflows:
   sonarqube-scanner:
-    jobs: 
-      - sonarqube/analyze
-        context: sonar_aws_cybage
+    jobs:
+      - sonarqube/analyze:
+          context: 
+            - sonar_aws_cybage
