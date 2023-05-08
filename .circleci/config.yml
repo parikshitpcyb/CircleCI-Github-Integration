@@ -9,7 +9,7 @@ orbs:
 workflows:
   sonarqube-scanner:
     jobs:
-      - maven/maven_test
+      - maven/maven_test:
       - sonarqube/analyze:
           context: 
             - sonar_aws_cybage
