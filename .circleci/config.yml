@@ -4,10 +4,12 @@ version: 2.1
 
 orbs:
   sonarqube: clicklogiq/sonarqube@1.0.1
+  maven: circleci/maven@1.4.1
 
 workflows:
   sonarqube-scanner:
     jobs:
+      - maven/maven_test
       - sonarqube/analyze:
           context: 
             - sonar_aws_cybage
