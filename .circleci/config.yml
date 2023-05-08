@@ -10,6 +10,8 @@ workflows:
   sonarqube-scanner:
     jobs:
       - sonarqube/analyze:
-          host_url: "http://44.207.177.192"
-          login: "sqa_0ed4fa8ecbb9c2266d3f036cd95de7e6a291033e"
-          projectKey: "CircleCI-Github-Integration"
+          host_url: $SONAR_HOST_URL
+          login: $SONAR_TOKEN
+          projectKey: $CIRCLE_PROJECT_REPONAME
+        context:
+          - SONAR_TOKEN
