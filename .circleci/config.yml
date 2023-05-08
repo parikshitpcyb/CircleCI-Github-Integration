@@ -14,3 +14,5 @@ workflows:
       - sonarqube/analyze:
           context: 
             - sonar_aws_cybage
+          requires:
+            - maven/test
