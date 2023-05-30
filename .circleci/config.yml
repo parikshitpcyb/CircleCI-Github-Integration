@@ -7,4 +7,7 @@ orbs:
 workflows:
   sonarqube-scanner:
     jobs:
-      - sonarqube/analyze
+      - sonarqube/analyze:
+          context: sonar_aws_cybage
+          sonar.exclusions: "**/*.java"
+          sonar.coverage.exclusions: "**/*.java"
