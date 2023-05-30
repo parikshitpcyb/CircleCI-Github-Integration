@@ -1,13 +1,12 @@
 version: 2.1
 
 orbs:
-  sonarqube: clicklogiq/sonarqube@1.0.1
+  sonarqube: escaletech/sonarqube@0.3.0
 
+jobs
 
 workflows:
   sonarqube-scanner:
     jobs:
       - sonarqube/analyze:
           context: sonar_aws_cybage
-          sonar.exclusions: "**/*.java"
-          sonar.coverage.exclusions: "**/*.java"
