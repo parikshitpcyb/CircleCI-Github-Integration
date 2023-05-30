@@ -8,5 +8,5 @@ jobs
 workflows:
   sonarqube-scanner:
     jobs:
-      - sonarqube/analyze:
+      - sonarqube/scanner:
           context: sonar_aws_cybage
