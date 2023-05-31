@@ -15,6 +15,6 @@ workflows:
   sonarqube-scanner:
     jobs:
       - echo-project
-      #- sonarqube/scanner:
-       #   name: sonarqube-scan
-        #  context: sonar_aws_cybage
+      - sonarqube/scanner:
+          name: sonarqube-scan
+          context: sonar_aws_cybage
