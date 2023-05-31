@@ -3,18 +3,10 @@ version: 2.1
 orbs:
   sonarqube: escaletech/sonarqube@0.3.0
 
-jobs:
-  echo-project:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run: echo $CIRCLE_PROJECT_REPONAME
 
 workflows:
   sonarqube-scanner:
     jobs:
-      - echo-project
       - sonarqube/scanner:
           name: sonarqube-scan
           context: sonar_aws_cybage
