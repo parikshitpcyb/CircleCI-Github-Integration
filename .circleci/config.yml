@@ -3,10 +3,15 @@ version: 2.1
 orbs:
   sonarqube: escaletech/sonarqube@0.3.0
 
+jobs:
+  echo-project:
+    steps:
+      - run: echo $CIRCLE_PROJECT_REPONAME
+
 workflows:
   sonarqube-scanner:
     jobs:
-      - run: echo $CIRCLE_PROJECT_REPONAME
-      - sonarqube/scanner:
-          name: sonarqube-scan
-          context: sonar_aws_cybage
+      - echo-project
+      #- sonarqube/scanner:
+       #   name: sonarqube-scan
+        #  context: sonar_aws_cybage
