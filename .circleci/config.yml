@@ -6,6 +6,7 @@ orbs:
 workflows:
   sonarqube-scanner:
     jobs:
+      - run: echo $CIRCLE_PROJECT_REPONAME
       - sonarqube/scanner:
           name: sonarqube-scan
           context: sonar_aws_cybage
